@@ -142,6 +142,48 @@ body{
     50%{transform:translate(18px,-15px) scale(1.05)}
 }
 
+
+/* V5.8 — LIVING WORLD ANIMATION LAYER */
+.mission-visual-world{
+  position:relative; margin:0 0 16px; min-height:126px; overflow:hidden;
+  border-radius:24px; border:2px solid rgba(85,120,255,.12);
+  background:linear-gradient(135deg,#f7fdff 0%,#f7f4ff 55%,#fff9ed 100%);
+  box-shadow:0 12px 28px rgba(54,72,112,.09);
+}
+.mission-visual-world::before{
+  content:"";position:absolute;inset:0;opacity:.42;
+  background-image:radial-gradient(circle,rgba(85,120,255,.18) 1.3px,transparent 1.3px);
+  background-size:22px 22px;
+}
+.world-scene-label{position:absolute;left:14px;top:10px;z-index:3;font-size:10px;font-weight:1000;letter-spacing:.1em;color:#6a7690}
+.world-track{position:absolute;left:10%;right:10%;bottom:22px;height:3px;border-radius:99px;background:linear-gradient(90deg,rgba(34,199,232,.2),rgba(85,120,255,.6),rgba(169,108,255,.25));}
+.world-robot{position:absolute;left:9%;bottom:34px;font-size:42px;z-index:4;animation:robotRun 4.5s ease-in-out infinite;filter:drop-shadow(0 7px 7px rgba(49,67,110,.16));}
+.robot-shadow{position:absolute;left:9%;bottom:24px;width:42px;height:9px;border-radius:50%;background:rgba(52,66,99,.14);animation:robotShadow 4.5s ease-in-out infinite;}
+.world-goal{position:absolute;right:9%;bottom:31px;font-size:34px;z-index:3;animation:goalPulse 1.7s ease-in-out infinite}
+.world-node{position:absolute;bottom:32px;font-size:25px;z-index:2;animation:nodeFloat 2.4s ease-in-out infinite}
+.world-node.n1{left:28%;animation-delay:-.4s}.world-node.n2{left:48%;animation-delay:-1.1s}.world-node.n3{left:68%;animation-delay:-1.7s}
+.pattern-sequence{position:absolute;left:50%;top:30px;transform:translateX(-50%);display:flex;gap:9px;z-index:3}
+.pattern-sequence span{width:25px;height:25px;display:grid;place-items:center;border-radius:8px;font-size:15px;background:#fff;border:2px solid #dfe7f5;box-shadow:0 5px 12px rgba(50,70,110,.08);animation:patternPop 1.8s ease-in-out infinite}
+.pattern-sequence span:nth-child(2){animation-delay:.15s}.pattern-sequence span:nth-child(3){animation-delay:.3s}.pattern-sequence span:nth-child(4){animation-delay:.45s}.pattern-sequence span:nth-child(5){animation-delay:.6s}
+.data-flow{position:absolute;inset:30px 13%;display:flex;align-items:center;justify-content:space-between;z-index:3}
+.data-card{padding:8px 11px;border-radius:12px;background:#fff;border:2px solid #e3e8f5;font-size:18px;box-shadow:0 5px 13px rgba(50,70,110,.08);animation:dataFloat 2.5s ease-in-out infinite}
+.data-card:nth-child(2){animation-delay:-.8s}.data-card:nth-child(3){animation-delay:-1.6s}
+.data-arrow{font-size:20px;font-weight:1000;color:#5578ff;animation:arrowPulse 1.1s ease-in-out infinite}
+.algorithm-flow{position:absolute;inset:30px 10%;display:flex;align-items:center;justify-content:center;gap:7px;z-index:3}
+.algo-step{min-width:58px;padding:8px 7px;text-align:center;border-radius:12px;background:#fff;border:2px solid #dfe6f5;font-size:11px;font-weight:1000;box-shadow:0 5px 12px rgba(50,70,110,.08);animation:algoStep 2.4s ease-in-out infinite}
+.algo-step:nth-child(2){animation-delay:.35s}.algo-step:nth-child(3){animation-delay:.7s}.algo-step:nth-child(4){animation-delay:1.05s}
+.algo-arrow{font-size:18px;color:#5578ff;animation:arrowPulse 1.1s ease-in-out infinite}
+@keyframes robotRun{0%,100%{transform:translateX(0) translateY(0) rotate(-2deg)}50%{transform:translateX(210%) translateY(-5px) rotate(2deg)}}
+@keyframes robotShadow{0%,100%{transform:translateX(0) scale(1);opacity:.18}50%{transform:translateX(210%) scale(.75);opacity:.1}}
+@keyframes goalPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.18) rotate(4deg)}}
+@keyframes nodeFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
+@keyframes patternPop{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(-6px) scale(1.08);border-color:#9db0ff}}
+@keyframes dataFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
+@keyframes arrowPulse{0%,100%{opacity:.45;transform:scale(1)}50%{opacity:1;transform:scale(1.15)}}
+@keyframes algoStep{0%,100%{transform:translateY(0);background:#fff}50%{transform:translateY(-7px);background:#f1f5ff;border-color:#a7b6ff}}
+@media(prefers-reduced-motion:reduce){.world-robot,.robot-shadow,.world-goal,.world-node,.pattern-sequence span,.data-card,.data-arrow,.algo-step,.algo-arrow{animation:none!important}}
+@media(max-width:720px){.mission-visual-world{min-height:108px}.world-robot{font-size:34px}.world-goal{font-size:28px}.world-node{font-size:20px}.pattern-sequence{top:34px;gap:5px}.pattern-sequence span{width:21px;height:21px;font-size:12px}.data-flow{inset:31px 7%}.data-card{font-size:14px;padding:6px 8px}.algorithm-flow{gap:4px}.algo-step{min-width:45px;font-size:9px;padding:7px 4px}.algo-arrow{font-size:14px}}
+
 /* ===================== APP ===================== */
 .app{
     position:relative;
@@ -620,7 +662,164 @@ body{
     box-shadow:0 0 10px rgba(85,120,255,.25);
 }
 
+
+/* V5.6 — EYE-CATCHING QUESTION EXPERIENCE */
+.question-card{
+  background:linear-gradient(180deg,#ffffff 0%,#fbfcff 100%);
+  border:2px solid #e7ecf6;
+  box-shadow:0 18px 42px rgba(43,57,91,.12);
+}
+.question-top{align-items:center;margin-bottom:14px}
+.question-meta-left{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.question-number-badge{
+  display:inline-flex;align-items:center;gap:6px;
+  padding:8px 12px;border-radius:999px;
+  background:linear-gradient(135deg,#273b8f,#5578ff);color:#fff;
+  font-size:11px;font-weight:1000;letter-spacing:.03em;
+  box-shadow:0 7px 16px rgba(85,120,255,.22);
+}
+.question-type,.bloom{border-radius:999px;padding:8px 12px}
+.question-card h3{
+  font-size:clamp(23px,2.5vw,34px);
+  line-height:1.28;letter-spacing:-.02em;
+  color:#1f2d4d;margin:8px 0 10px;
+  max-width:900px;
+}
+.question-description{
+  font-size:14px;line-height:1.65;color:#5f6d86;
+  max-width:900px;margin-bottom:16px;
+}
+.question-visual{
+  position:relative;
+  grid-template-columns:108px minmax(0,1fr);
+  gap:16px;padding:12px 14px;
+  border:2px solid #e3eaf7;
+  background:linear-gradient(135deg,#f4fbff,#faf7ff);
+  box-shadow:0 8px 22px rgba(51,72,112,.07);
+}
+.question-visual-art{
+  width:100%;height:88px;min-width:0;
+  font-size:clamp(30px,4vw,46px);
+  border-radius:18px;
+}
+.question-visual-title{font-size:17px;line-height:1.3;color:#263653}
+.question-visual-sub{font-size:12px;line-height:1.5}
+.context-chip{display:inline-flex;margin-top:8px;font-size:11px!important;padding:6px 9px!important}
+#questionArea{position:relative}
+#questionArea > .drag-instruction,
+#questionArea > .match-instruction,
+#questionArea > .sort-instruction,
+#questionArea > .fill-instruction{
+  background:#fff;border:2px dashed #cfd9ef;
+  color:#43516b;box-shadow:0 5px 14px rgba(50,70,105,.05);
+  font-size:13px;padding:11px 14px;
+}
+.options{gap:14px;margin-top:16px}
+.option{
+  position:relative;min-height:78px;padding:16px 17px;
+  display:flex;align-items:center;gap:12px;
+  background:#fff;border:2px solid #e2e8f3;
+  border-radius:20px;font-size:14px;line-height:1.45;
+  box-shadow:0 7px 16px rgba(47,64,99,.055);
+}
+.option::before{
+  content:attr(data-option);
+  flex:0 0 30px;width:30px;height:30px;
+  display:grid;place-items:center;border-radius:10px;
+  background:#eef3ff;color:#5578ff;font-weight:1000;font-size:12px;
+}
+.option:hover{border-color:#9fb1ff;background:#f8faff;box-shadow:0 10px 22px rgba(85,120,255,.12)}
+.option.selected{border-color:#5578ff;background:linear-gradient(135deg,#f1f5ff,#fff);box-shadow:0 10px 22px rgba(85,120,255,.14)}
+.option.selected::before{background:#5578ff;color:#fff}
+.feedback{
+  border-radius:18px!important;font-size:14px!important;line-height:1.5!important;
+  padding:12px 15px!important;margin-top:16px!important;
+}
+@media(max-width:720px){
+ .question-card{padding:18px;border-radius:22px}
+ .question-top{gap:8px}
+ .question-visual{grid-template-columns:76px minmax(0,1fr);gap:11px;padding:10px}
+ .question-visual-art{height:72px;font-size:32px}
+ .question-visual-title{font-size:14px}
+ .question-card h3{font-size:22px}
+ .question-description{font-size:13px}
+ .options{grid-template-columns:1fr}
+ .option{min-height:66px;padding:13px;font-size:13px}
+}
+
 /* ===================== QUESTION CARD ===================== */
+
+/* =========================================================
+   V5.1 — KIDS VISUAL QUESTION LAYER
+========================================================= */
+.question-hero{
+    display:grid;
+    grid-template-columns:88px 1fr;
+    gap:18px;
+    align-items:center;
+    margin:0 0 18px;
+    padding:16px 18px;
+    border-radius:24px;
+    background:linear-gradient(135deg,rgba(34,199,232,.13),rgba(169,108,255,.12),rgba(255,201,40,.14));
+    border:2px solid rgba(85,120,255,.10);
+    box-shadow:0 10px 25px rgba(69,82,120,.08);
+    overflow:hidden;
+    position:relative;
+}
+.question-hero::after{
+    content:"";
+    position:absolute;
+    width:130px;height:130px;
+    border-radius:50%;
+    right:-48px;top:-55px;
+    background:rgba(255,255,255,.45);
+}
+.question-hero-icon{
+    width:82px;height:82px;
+    border-radius:24px;
+    display:grid;place-items:center;
+    font-size:48px;
+    background:#fff;
+    border:3px solid rgba(255,255,255,.9);
+    box-shadow:0 10px 22px rgba(69,82,120,.15);
+    transform:rotate(-3deg);
+    position:relative;z-index:1;
+}
+.question-hero-copy{position:relative;z-index:1}
+.question-hero-copy .mini-label{
+    display:inline-flex;align-items:center;gap:6px;
+    font-size:12px;font-weight:900;letter-spacing:.08em;
+    text-transform:uppercase;color:#5578ff;margin-bottom:4px;
+}
+.question-hero-copy .mini-text{font-size:14px;font-weight:800;color:#66728a;line-height:1.45}
+.visual-tip{
+    margin-top:12px;padding:11px 14px;border-radius:16px;
+    background:rgba(255,255,255,.75);font-size:13px;font-weight:800;color:#4d5a73;
+}
+.choice-grid.multi .option{padding-right:16px;text-align:left}
+.option .checkmark{margin-left:auto;font-size:20px;opacity:.3}
+.option.selected .checkmark{opacity:1}
+.drag-instruction,.match-instruction,.sort-instruction,.fill-instruction{
+    margin:8px 0 14px;padding:10px 13px;border-radius:14px;
+    background:#f7faff;color:#53617a;font-weight:800;font-size:13px;text-align:center;
+}
+.drag-item{cursor:grab;min-height:56px;display:flex;align-items:center;gap:10px}
+.drag-item::before{content:"✋";font-size:18px}
+.drag-item.used{opacity:.45;transform:scale(.98)}
+.drop-zone{min-height:180px}
+.drop-slot{cursor:pointer;position:relative;padding-right:38px}
+.drop-slot::after{content:"×";position:absolute;right:12px;top:50%;transform:translateY(-50%);font-weight:900;font-size:20px;opacity:.65}
+.sort-builder{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.sort-bank,.sort-answer{background:#f8fbff;border:2px dashed rgba(85,120,255,.18);border-radius:20px;padding:14px}
+.sort-bank h4,.sort-answer h4{margin:0 0 10px;font-size:14px}
+.sort-card,.sort-picked{display:flex;align-items:center;gap:10px;padding:12px;margin:8px 0;border-radius:14px;background:#fff;border:2px solid rgba(64,79,112,.09);font-weight:800;cursor:pointer;box-shadow:0 5px 12px rgba(69,82,120,.06)}
+.sort-card:hover,.sort-card.selected{border-color:#5578ff;transform:translateY(-1px)}
+.sort-picked{cursor:default;background:#eef7ff}
+.sort-picked .remove-sort{margin-left:auto;border:0;background:#fff0f2;color:#ff667a;border-radius:10px;width:30px;height:30px;font-weight:900}
+.sort-actions{display:flex;gap:8px;justify-content:center;margin-top:10px;flex-wrap:wrap}
+.sort-actions button{border:0;border-radius:12px;padding:9px 13px;font-weight:900;background:#fff;box-shadow:0 4px 10px rgba(69,82,120,.08);cursor:pointer}
+@media(max-width:720px){.question-hero{grid-template-columns:64px 1fr;padding:12px}.question-hero-icon{width:62px;height:62px;font-size:36px;border-radius:18px}.sort-builder{grid-template-columns:1fr}.drag-layout{grid-template-columns:1fr!important}}
+
 .question-card{
     min-height:470px;
     padding:26px;
@@ -913,6 +1112,29 @@ body{
 .certificate-name{font-size:28px;font-weight:900;color:#5578ff}
 .certificate p{color:#64728b}
 
+
+/* ===================== V5 LEARNING SYSTEM ===================== */
+.v5-quick{margin-top:18px;padding:18px;border-radius:22px;background:rgba(255,255,255,.82);border:1px solid var(--border);box-shadow:var(--soft-shadow)}
+.v5-quick-title{font-weight:1000;font-size:13px;margin-bottom:10px;color:#33415f}
+.v5-profile{display:grid;grid-template-columns:1.3fr .8fr;gap:10px}
+.v5-input{width:100%;min-height:48px;border:2px solid #e1e7f0;border-radius:14px;padding:0 14px;font-weight:800;color:#33415f;background:#fff;outline:none}
+.v5-input:focus{border-color:var(--blue);box-shadow:0 0 0 4px rgba(85,120,255,.10)}
+.v5-tools{display:flex;gap:9px;flex-wrap:wrap;margin-top:10px}
+.v5-tool{min-height:44px;border:0;border-radius:13px;padding:0 14px;background:#eef3ff;color:#3f54a2;font-weight:900;cursor:pointer}
+.v5-tool.teacher{background:#f1eaff;color:#7444ad}
+.v5-level-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:18px}
+.v5-level-card{padding:20px;border-radius:22px;background:#fff;border:2px solid #e3e8f1;box-shadow:var(--soft-shadow);cursor:pointer;transition:.18s}
+.v5-level-card:hover{transform:translateY(-3px);border-color:#b8c7ff}
+.v5-level-card.locked{opacity:.48;cursor:not-allowed}
+.v5-level-icon{font-size:30px}.v5-level-card h3{margin:8px 0 4px}.v5-level-card p{font-size:12px;color:#748099;line-height:1.5}.v5-level-pill{display:inline-block;margin-top:8px;padding:6px 9px;border-radius:99px;background:#f2f5fb;font-size:10px;font-weight:900}
+.v5-mastery{margin-top:12px;padding:13px 15px;border-radius:16px;background:#f7f9fd;border:1px solid #e4e9f2}
+.v5-mastery-row{display:grid;grid-template-columns:120px 1fr 42px;gap:8px;align-items:center;margin:8px 0;font-size:10px;font-weight:900;color:#596681}
+.v5-bar{height:10px;border-radius:99px;background:#e8edf5;overflow:hidden}.v5-bar span{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,#22c7e8,#5578ff)}
+.v5-reflect-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:18px}.v5-reflect-card{padding:15px;border-radius:18px;background:#fff;border:1px solid #e2e7f0}.v5-reflect-card label{display:block;font-size:11px;font-weight:900;color:#52617d;margin-bottom:7px}.v5-textarea{width:100%;min-height:105px;border:2px solid #e1e7f0;border-radius:14px;padding:12px;font:inherit;font-size:12px;resize:vertical;outline:none}.v5-textarea:focus{border-color:var(--blue)}
+.v5-dashboard{width:min(1100px,100%);max-height:calc(100vh - 60px);overflow:auto;padding:24px}.v5-dashboard-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:15px 0}.v5-stat{padding:16px;border-radius:18px;background:#fff;border:1px solid #e1e7f0;text-align:center}.v5-stat strong{display:block;font-size:24px;color:#33415f}.v5-stat span{font-size:9px;font-weight:900;color:#8791a5}.v5-table{width:100%;border-collapse:collapse;background:#fff;border-radius:16px;overflow:hidden;font-size:11px}.v5-table th,.v5-table td{padding:10px;border-bottom:1px solid #edf0f5;text-align:left}.v5-table th{background:#f4f7fc;color:#53617a}.v5-create{max-width:900px;width:100%;padding:28px;border-radius:28px;background:#fff;box-shadow:var(--shadow)}
+.v5-final-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:20px 0}.v5-step{padding:14px;border-radius:17px;text-align:center;background:#f7f9fd;border:1px solid #e2e7f0;font-weight:900;font-size:11px}.v5-step b{display:block;font-size:22px;margin-bottom:5px}
+@media(max-width:700px){.v5-profile,.v5-level-grid,.v5-reflect-grid,.v5-dashboard-grid,.v5-final-steps{grid-template-columns:1fr}.v5-dashboard{padding:12px}}
+
 /* ===================== RESPONSIVE ===================== */
 @media(max-width:1050px){
     .home-grid{grid-template-columns:1fr}
@@ -943,6 +1165,138 @@ body{
     .screen{padding-left:4vw;padding-right:4vw}
     .home-grid,.mission-grid,.section-title,.avatar-row{max-width:1500px}
 }
+
+/* ===== ROBO-BITO V5.3 CONTEXTUAL VISUALS ===== */
+.question-visual-art{background:linear-gradient(145deg,#ffffff,#f3f8ff);font-size:40px;letter-spacing:2px;line-height:1.35;padding:8px;word-break:keep-all}
+.question-visual{position:relative;overflow:hidden}
+.question-visual::before{content:"👀";position:absolute;right:14px;top:10px;font-size:14px;opacity:.35}
+.context-chip{display:inline-flex;align-items:center;gap:5px;padding:5px 9px;border-radius:99px;background:#eef7ff;color:#4d67c9;font-size:10px;font-weight:900;margin-top:7px}
+@media(max-width:720px){.question-visual-art{font-size:30px;letter-spacing:1px}}
+
+/* ===== ROBO-BITO V5.2 VISUAL GAME UPGRADE ===== */
+.mission-card{position:relative;overflow:hidden}
+.mission-art{height:118px;border-radius:18px;margin:-2px -2px 12px;display:grid;place-items:center;background:linear-gradient(135deg,#eef9ff,#f8f3ff);border:1px solid #dbe8f5;position:relative;overflow:hidden}
+.mission-art .orb{position:absolute;width:90px;height:90px;border-radius:50%;right:-20px;top:-25px;background:#dff7ff}.mission-art .orb2{position:absolute;width:55px;height:55px;border-radius:50%;left:-15px;bottom:-15px;background:#fff0b8}
+.mission-art .art-emoji{font-size:58px;filter:drop-shadow(0 6px 8px rgba(30,55,90,.14));z-index:2}
+.visual-tip{margin:14px 0;padding:12px 15px;border-radius:14px;background:#f7fbff;border:1px solid #dceaf7;color:#4b5c73;font-size:12px;line-height:1.55}
+.question-visual{display:grid;grid-template-columns:120px 1fr;gap:16px;align-items:center;margin:0 0 16px;padding:14px;border-radius:20px;background:linear-gradient(135deg,#f3fbff,#fbf8ff);border:1px solid #dbe7f3}
+.question-visual-art{height:92px;border-radius:16px;display:grid;place-items:center;background:#fff;font-size:52px;border:1px solid #e3eaf3;box-shadow:0 6px 18px rgba(30,55,90,.08)}
+.question-visual-title{font-size:16px;font-weight:900;color:#293654}.question-visual-sub{font-size:12px;color:#718096;margin-top:5px;line-height:1.45}
+.option{transition:.18s}.option:hover{transform:translateY(-2px)}
+.drag-item,.sort-card,.match-card,.classify-card{user-select:none;touch-action:manipulation}
+.drag-item.used{pointer-events:auto}.drop-slot{cursor:pointer}
+.match-card.matched{background:#eafaf1!important;border-color:#6fd39b!important;color:#23734b!important}
+.match-card.selected{outline:3px solid rgba(72,230,255,.28);transform:translateY(-2px)}
+.sort-picked{animation:popIn .16s ease}.sort-card.selected{opacity:.55}
+@keyframes popIn{from{transform:scale(.96);opacity:.4}to{transform:scale(1);opacity:1}}
+.feedback{font-weight:800}
+@media(max-width:720px){.question-visual{grid-template-columns:82px 1fr}.question-visual-art{height:76px;font-size:40px}.mission-art{height:100px}}
+
+
+
+/* ===== V5.4 ADVENTURE MODE ===== */
+.adventure-panel{margin:0 0 18px;padding:18px;border-radius:26px;background:linear-gradient(135deg,#ffffffee,#eefaffee 52%,#f7efffee);border:1px solid rgba(69,82,120,.11);box-shadow:var(--soft-shadow);position:relative;overflow:hidden}
+.adventure-panel:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 90% 10%,rgba(255,201,40,.18),transparent 24%),radial-gradient(circle at 8% 90%,rgba(34,199,232,.14),transparent 25%);pointer-events:none}
+.adventure-head{display:flex;align-items:center;gap:13px;position:relative;z-index:1}.story-avatar{width:58px;height:58px;border-radius:18px;display:grid;place-items:center;background:#fff;border:2px solid #dce8f5;font-size:34px;box-shadow:0 7px 16px rgba(69,82,120,.1)}
+.story-copy{flex:1}.story-label{font-size:9px;letter-spacing:1.5px;font-weight:1000;color:#5578ff}.story-title{font-size:18px;font-weight:1000;color:#293654;margin-top:3px}.story-text{font-size:12px;line-height:1.55;color:#66738a;margin:5px 0 0}
+.scene{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:15px;position:relative;z-index:1}.scene-object{min-height:76px;border:2px solid #e1e8f2;background:rgba(255,255,255,.86);border-radius:17px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;cursor:pointer;transition:.18s;box-shadow:0 5px 12px rgba(69,82,120,.05);font-weight:900;color:#51617c}.scene-object:hover{transform:translateY(-4px) scale(1.02);border-color:#b8c8ff}.scene-object.active{border-color:#5578ff;background:#eef1ff;box-shadow:0 9px 20px rgba(85,120,255,.14)}.scene-icon{font-size:30px}.scene-name{font-size:9px}.scene-tip{margin-top:10px;padding:10px 12px;border-radius:13px;background:#f7faff;color:#52617b;font-size:11px;display:none}.scene-tip.show{display:block;animation:tipIn .25s ease}@keyframes tipIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
+.adventure-progress{display:flex;align-items:center;gap:8px;margin-top:13px;font-size:10px;font-weight:900;color:#758198}.story-dot{width:9px;height:9px;border-radius:50%;background:#dbe3ef}.story-dot.done{background:#35c98b}.story-dot.current{background:#5578ff;box-shadow:0 0 0 4px rgba(85,120,255,.12)}
+.feedback.correct{animation:correctPop .38s ease}.feedback.wrong{animation:shake .35s ease}@keyframes correctPop{0%{transform:scale(.97)}55%{transform:scale(1.02)}100%{transform:scale(1)}}@keyframes shake{25%{transform:translateX(-5px)}50%{transform:translateX(5px)}75%{transform:translateX(-3px)}}
+.reward-burst{position:fixed;inset:0;pointer-events:none;z-index:99;overflow:hidden}.spark{position:absolute;font-size:24px;animation:sparkFly .9s ease-out forwards}@keyframes sparkFly{0%{transform:translate(0,0) scale(.6);opacity:0}15%{opacity:1}100%{transform:translate(var(--dx),var(--dy)) rotate(240deg) scale(1.2);opacity:0}}
+@media(max-width:700px){.scene{grid-template-columns:repeat(2,1fr)}.adventure-head{align-items:flex-start}.story-title{font-size:15px}}
+
+
+/* ===== V5.5 ICON / TEXT SPACING FIX ===== */
+.question-visual{grid-template-columns:minmax(92px,112px) minmax(0,1fr);align-items:center}.question-visual-art{font-size:clamp(28px,4.5vw,46px);line-height:1.05;letter-spacing:0;white-space:normal;overflow:hidden;word-break:normal;padding:8px}.question-visual-art + div{min-width:0}.question-visual-title,.question-visual-sub{overflow-wrap:anywhere}.context-chip{max-width:100%;white-space:normal}.scene-object{overflow:hidden;padding:8px 5px}.scene-icon{font-size:clamp(24px,3vw,30px);line-height:1}.scene-name{line-height:1.2;text-align:center;max-width:100%;overflow-wrap:anywhere}.v5-level-card.locked{pointer-events:auto}@media(max-width:720px){.question-visual{grid-template-columns:76px minmax(0,1fr);gap:10px}.question-visual-art{height:72px;font-size:32px}.scene-object{min-height:72px}}
+
+/* ===== V5.9 ALGORITHM MASTER CHALLENGE VISUAL ===== */
+.algorithm-master-visual{
+  margin:18px 0 22px;
+  padding:18px;
+  border-radius:24px;
+  background:linear-gradient(135deg,#f7fbff 0%,#fffaf0 52%,#fff4e8 100%);
+  border:2px solid #e6eef8;
+  box-shadow:0 12px 30px rgba(33,86,145,.10);
+  overflow:hidden;
+}
+.amv-head{display:flex;align-items:center;gap:10px;margin-bottom:14px}
+.amv-badge{padding:6px 10px;border-radius:999px;background:#eef6ff;color:#1769aa;font-weight:900;font-size:11px;letter-spacing:.06em}
+.amv-title{font-size:16px;font-weight:900;color:#17324d}
+.amv-sub{font-size:12px;color:#60758b;margin:2px 0 14px}
+.amv-flow{display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap}
+.amv-node{
+  min-width:92px;min-height:76px;padding:10px 8px;border-radius:18px;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  background:#fff;border:2px solid #dce9f5;box-shadow:0 7px 16px rgba(30,75,120,.08);
+  animation:amvFloat 3.5s ease-in-out infinite;
+}
+.amv-node:nth-child(3){animation-delay:.25s}.amv-node:nth-child(5){animation-delay:.5s}.amv-node:nth-child(7){animation-delay:.75s}
+.amv-icon{font-size:30px;line-height:1;margin-bottom:5px}.amv-label{font-size:11px;font-weight:900;color:#26445f;text-align:center}
+.amv-arrow{font-size:25px;font-weight:900;color:#f39a24}
+.amv-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px}
+.amv-card{background:#fff;border:2px solid #e8edf3;border-radius:18px;padding:12px}
+.amv-card strong{display:block;font-size:12px;color:#31516e;margin-bottom:8px}
+.amv-route{display:flex;align-items:center;gap:6px;flex-wrap:wrap;justify-content:center}
+.amv-step{width:34px;height:34px;border-radius:10px;display:grid;place-items:center;font-weight:900;background:#edf7ff;color:#1769aa;border:1px solid #cfe7fb}
+.amv-step.hot{background:#fff1d9;color:#c96b00;border-color:#ffd28a}
+.amv-step.goal{background:#eaf9ed;color:#208443;border-color:#bfe8ca}
+.amv-note{margin-top:12px;padding:10px 12px;border-radius:14px;background:#fff8df;color:#745718;font-size:12px;font-weight:700}
+@keyframes amvFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+@media(max-width:700px){.algorithm-master-visual{padding:13px}.amv-node{min-width:72px;min-height:66px}.amv-icon{font-size:25px}.amv-grid{grid-template-columns:1fr}.amv-arrow{font-size:20px}}
+
+
+/* ===== V5.10 READABLE QUESTION TYPOGRAPHY ===== */
+.question-card .question-text,
+#questionArea .question-text,
+.question-text{
+  font-size:clamp(23px,2.25vw,32px) !important;
+  line-height:1.42 !important;
+  font-weight:850 !important;
+  letter-spacing:-0.01em;
+  color:#17324d !important;
+  max-width:100% !important;
+}
+.question-card .question-desc,
+#questionArea .question-desc{
+  font-size:clamp(16px,1.35vw,20px) !important;
+  line-height:1.55 !important;
+}
+.question-card .option,
+#questionArea .option,
+.question-card button.option,
+#questionArea button.option{
+  font-size:clamp(17px,1.35vw,21px) !important;
+  line-height:1.4 !important;
+  min-height:64px !important;
+  padding:15px 18px !important;
+}
+.question-card .option .letter,
+#questionArea .option .letter{
+  font-size:18px !important;
+  min-width:38px !important;
+  min-height:38px !important;
+}
+.question-card .question-label,
+#questionArea .question-label{
+  font-size:14px !important;
+  font-weight:900 !important;
+}
+@media(max-width:700px){
+  .question-card .question-text,
+  #questionArea .question-text,
+  .question-text{font-size:22px !important;line-height:1.4 !important}
+  .question-card .question-desc,
+  #questionArea .question-desc{font-size:16px !important}
+  .question-card .option,
+  #questionArea .option,
+  .question-card button.option,
+  #questionArea button.option{
+    font-size:17px !important;
+    min-height:60px !important;
+    padding:13px 14px !important;
+  }
+}
+
 </style>
 </head>
 
@@ -1094,6 +1448,18 @@ body{
 
             </div>
 
+        </div>
+
+        <div class="v5-quick">
+            <div class="v5-quick-title">👤 PROFIL PEMBELAJAR</div>
+            <div class="v5-profile">
+                <input class="v5-input" id="studentName" placeholder="Nama siswa">
+                <input class="v5-input" id="studentClass" placeholder="Kelas (contoh: VII-A)">
+            </div>
+            <div class="v5-tools">
+                <button class="v5-tool teacher" onclick="showTeacherDashboard()">👩‍🏫 Mode Guru</button>
+                <button class="v5-tool" onclick="showHowTo()">📚 Panduan Belajar</button>
+            </div>
         </div>
 
 
@@ -1442,22 +1808,30 @@ body{
         </div>
 
 
+        <div class="adventure-panel" id="adventurePanel">
+            <div class="adventure-head">
+                <div class="story-avatar" id="storyAvatar">🤖</div>
+                <div class="story-copy">
+                    <div class="story-label" id="storyLabel">PETUALANGAN ROBO-BITO</div>
+                    <div class="story-title" id="storyTitle">Misi dimulai!</div>
+                    <div class="story-text" id="storyText">Bantu Robo-Bito menemukan solusi.</div>
+                </div>
+            </div>
+            <div class="scene" id="sceneObjects"></div>
+            <div class="scene-tip" id="sceneTip"></div>
+            <div class="adventure-progress" id="storyProgress"></div>
+        </div>
+
+        <div class="mission-visual-world" id="missionVisualWorld" aria-label="Animasi dunia misi"></div>
+
         <div class="question-card">
 
             <div class="question-top">
-
-                <span
-                    class="question-type"
-                    id="questionType">
-                    CHALLENGE
-                </span>
-
-                <span
-                    class="bloom"
-                    id="bloomLevel">
-                    C3
-                </span>
-
+                <div class="question-meta-left">
+                    <span class="question-number-badge" id="questionNumber">SOAL 1</span>
+                    <span class="question-type" id="questionType">CHALLENGE</span>
+                </div>
+                <span class="bloom" id="bloomLevel">C3</span>
             </div>
 
 
@@ -1525,6 +1899,91 @@ body{
 
 </section>
 
+
+<!-- =======================================================
+     V5 LEVEL PICKER
+======================================================= -->
+<section id="levelPickerScreen" class="screen">
+    <div class="center-screen">
+        <div class="complete-card">
+            <div class="reward-icon">🗺️</div>
+            <h2 id="levelPickerTitle">Pilih Level Misi</h2>
+            <p id="levelPickerSubtitle">Naik level sesuai kesiapanmu.</p>
+            <div class="v5-level-grid" id="levelPickerGrid"></div>
+            <div style="margin-top:18px"><button class="btn btn-secondary" onclick="goHome()">← Kembali</button></div>
+        </div>
+    </div>
+</section>
+
+<!-- =======================================================
+     V5 REFLECTION SCREEN
+======================================================= -->
+<section id="reflectionScreen" class="screen">
+    <div class="center-screen">
+        <div class="complete-card" style="max-width:900px;text-align:left">
+            <div class="reward-icon" style="margin:0 auto">🧠</div>
+            <h2 style="text-align:center">REFLECT — Berpikir Kembali</h2>
+            <p style="text-align:center" id="reflectionSummary">Apa yang kamu pelajari dari misi ini?</p>
+            <div class="v5-reflect-grid">
+                <div class="v5-reflect-card"><label>1. Strategi apa yang kamu gunakan?</label><textarea class="v5-textarea" id="reflectionStrategy"></textarea></div>
+                <div class="v5-reflect-card"><label>2. Bagian mana yang paling sulit?</label><textarea class="v5-textarea" id="reflectionHard"></textarea></div>
+                <div class="v5-reflect-card"><label>3. Kesalahan apa yang kamu perbaiki?</label><textarea class="v5-textarea" id="reflectionFix"></textarea></div>
+                <div class="v5-reflect-card"><label>4. Di mana konsep ini dapat digunakan?</label><textarea class="v5-textarea" id="reflectionTransfer"></textarea></div>
+            </div>
+            <div style="display:flex;justify-content:center;margin-top:18px"><button class="btn btn-primary" onclick="submitReflection()">Simpan Refleksi →</button></div>
+        </div>
+    </div>
+</section>
+
+<!-- =======================================================
+     V5 TEACHER DASHBOARD
+======================================================= -->
+<section id="teacherScreen" class="screen">
+    <div class="center-screen">
+        <div class="v5-dashboard">
+            <div style="display:flex;justify-content:space-between;gap:10px;align-items:center;flex-wrap:wrap">
+                <div><span class="eyebrow">👩‍🏫 TEACHER MODE</span><h2 style="margin:8px 0 3px">Dashboard ROBO-BITO</h2><p style="margin:0;color:#77839a;font-size:12px">Data tersimpan lokal pada perangkat ini.</p></div>
+                <div class="v5-tools"><button class="v5-tool" onclick="exportTeacherCSV()">⬇️ Export CSV</button><button class="v5-tool" onclick="clearTeacherData()">🗑️ Hapus Data</button><button class="v5-tool" onclick="goHome()">🏠 Home</button></div>
+            </div>
+            <div class="v5-dashboard-grid">
+                <div class="v5-stat"><strong id="tdStudents">0</strong><span>SISWA/SESI</span></div>
+                <div class="v5-stat"><strong id="tdMissions">0</strong><span>MISI SELESAI</span></div>
+                <div class="v5-stat"><strong id="tdAvg">0</strong><span>RATA-RATA %</span></div>
+                <div class="v5-stat"><strong id="tdReflections">0</strong><span>REFLEKSI</span></div>
+            </div>
+            <div class="v5-mastery">
+                <h3 style="margin:0 0 8px">📊 Mastery per Konsep</h3>
+                <div id="tdMastery"></div>
+            </div>
+            <div style="margin-top:18px;overflow:auto"><table class="v5-table"><thead><tr><th>Nama</th><th>Kelas</th><th>Misi</th><th>Level</th><th>Benar</th><th>Skor</th></tr></thead><tbody id="tdRows"></tbody></table></div>
+        </div>
+    </div>
+</section>
+
+<!-- =======================================================
+     V5 CREATE CHALLENGE
+======================================================= -->
+<section id="createScreen" class="screen">
+    <div class="center-screen">
+        <div class="v5-create">
+            <span class="eyebrow">🏆 FINAL MISSION — CREATE</span>
+            <h2 style="font-size:32px;margin:12px 0 4px">Sekarang Kamu Menjadi Problem Solver!</h2>
+            <p style="color:#6e7b93">🚀 Kamu sudah melewati empat dunia. Sekarang Robo-Bito menyerahkan satu masalah nyata kepadamu. Tidak ada pilihan jawaban—kamu yang menciptakan solusinya.</p>
+            <div class="adventure-panel" style="margin-top:14px"><div class="adventure-head"><div class="story-avatar">🏆</div><div class="story-copy"><div class="story-label">FINAL BOSS — CREATE</div><div class="story-title">Kamu adalah Problem Solver!</div><div class="story-text">Pilih masalah, pecah menjadi bagian, temukan pola, saring informasi, lalu bangun algoritmamu sendiri.</div></div></div></div>
+            <div class="v5-final-steps">
+                <div class="v5-step"><b>🧩</b>DEKOMPOSISI</div><div class="v5-step"><b>🔍</b>CARI POLA</div><div class="v5-step"><b>🎯</b>ABSTRAKSI</div><div class="v5-step"><b>⚙️</b>ALGORITMA</div>
+            </div>
+            <div class="v5-reflect-card"><label>Pilih masalah sekolah yang ingin kamu selesaikan.</label><select class="v5-input" id="createProblem"><option>Sampah di lingkungan sekolah</option><option>Antrean kantin</option><option>Penggunaan listrik</option><option>Penyiraman tanaman</option><option>Absensi siswa</option></select></div>
+            <div class="v5-reflect-grid">
+                <div class="v5-reflect-card"><label>🧩 Dekomposisi — pecah masalah menjadi bagian.</label><textarea class="v5-textarea" id="createDecomp"></textarea></div>
+                <div class="v5-reflect-card"><label>🔍 Pola — kebiasaan/data apa yang kamu temukan?</label><textarea class="v5-textarea" id="createPattern"></textarea></div>
+                <div class="v5-reflect-card"><label>🎯 Abstraksi — data penting apa yang dipakai?</label><textarea class="v5-textarea" id="createAbstract"></textarea></div>
+                <div class="v5-reflect-card"><label>⚙️ Algoritma — tuliskan langkah solusi.</label><textarea class="v5-textarea" id="createAlgorithm"></textarea></div>
+            </div>
+            <div style="display:flex;justify-content:center;margin-top:18px"><button class="btn btn-primary" onclick="submitCreateChallenge()">🚀 Simpan Solusi & Dapatkan Sertifikat</button></div>
+        </div>
+    </div>
+</section>
 
 <!-- =======================================================
      COMPLETE SCREEN
@@ -1598,8 +2057,9 @@ body{
 
                 <button
                     class="btn btn-primary"
-                    onclick="nextMission()">
-                    Misi Berikutnya →
+                    onclick="nextMission()"
+                    id="nextMissionBtn">
+                    Level Berikutnya →
                 </button>
 
             </div>
@@ -1635,7 +2095,7 @@ body{
                 Diberikan kepada
             </p>
 
-            <div class="certificate-name">
+            <div class="certificate-name" id="certificateName">
                 Computational Thinker
             </div>
 
@@ -1691,7 +2151,11 @@ const state = {
 
     selectedAnswer:null,
 
+    selectedAnswers:[],
+
     selectedItems:[],
+
+    sortOrder:[],
 
     matchingPairs:{},
 
@@ -1707,7 +2171,18 @@ const state = {
 
     missionCorrect:0,
 
-    missionScore:0
+    missionScore:0,
+
+    currentLevel:1,
+    levelQuestions:[],
+    studentName:"",
+    studentClass:"",
+    reflections:0,
+    finalCreate:false,
+    unlockedLevels:{1:1,2:0,3:0,4:0},
+    completedLevels:{1:[],2:[],3:[],4:[]},
+    sceneBonuses:{},
+    questionProgress:{}
 
 };
 
@@ -1716,6 +2191,11 @@ const state = {
    MISSION DATA
 ========================================================= */
 
+const adventureStories={
+1:{avatar:"🤖",title:"Robot Kebun Kehabisan Air!",text:"Robo-Bito tiba di kebun sekolah. Tanaman mulai layu. Bantu robot memecahkan masalah penyiraman dengan membaginya menjadi bagian-bagian kecil.",objects:[["🌱","Tanaman","Tanaman perlu air agar tetap sehat."],["💧","Air","Air harus tersedia sebelum pompa bekerja."],["📡","Sensor","Sensor membaca kondisi tanah."],["🔧","Pompa","Pompa mengalirkan air ke tanaman."]]},
+2:{avatar:"🔎",title:"Misteri Pola di Laboratorium!",text:"Lampu di Laboratorium Robo-Bito menyala dengan pola aneh. Temukan aturan yang tersembunyi agar robot dapat memprediksi kejadian berikutnya.",objects:[["🔵","Bola Biru","Amati kapan warna ini muncul."],["🟡","Bola Kuning","Bandingkan posisinya dengan pola sebelumnya."],["🔢","Angka","Perubahan angka dapat membentuk aturan."],["🔍","Kaca Pembesar","Gunakan untuk mencari pola yang berulang."]]},
+3:{avatar:"🎯",title:"Kota Data Penuh Informasi!",text:"Robo-Bito mendapat terlalu banyak informasi dari sekolah. Tidak semuanya dibutuhkan. Bantu memilih data yang benar-benar penting untuk solusi.",objects:[["📋","Data","Tidak semua data harus digunakan."],["🎒","Tas","Detail pribadi belum tentu relevan."],["🎯","Tujuan","Tentukan dulu apa yang ingin diselesaikan."],["🧹","Filter","Singkirkan informasi yang tidak membantu."]]},
+4:{avatar:"⚙️",title:"Robot Factory Dalam Bahaya!",text:"Mesin di Robot Factory berhenti. Robo-Bito harus membuat langkah yang tepat, menemukan kesalahan, dan memilih rute paling efisien untuk mencapai baterai.",objects:[["⚙️","Mesin","Ikuti langkah kerja yang benar."],["🐞","Bug","Cari instruksi yang menyebabkan kesalahan."],["🗺️","Peta","Keputusan menentukan arah perjalanan."],["🔋","Baterai","Target akhir Robo-Bito."]]}};
 const missions = [
 
     {
@@ -1743,6 +2223,8 @@ const missions = [
 
                 title:
                     "Pecah masalah penyiram tanaman otomatis",
+
+                art:"🤖🌱💧🚰", visualTitle:"Misi Penyiram Tanaman", visualHint:"Bayangkan robot membaca kondisi tanah lalu mengalirkan air ke tanaman.",
 
                 description:
                     "Robo-Bito ingin membuat penyiram tanaman otomatis. Pilih bagian yang memang diperlukan untuk memecahkan masalah tersebut.",
@@ -1778,6 +2260,8 @@ const missions = [
                 title:
                     "Bagian mana yang merupakan submasalah?",
 
+                art:"🍱🥤👜", visualTitle:"Menyiapkan Bekal Sekolah", visualHint:"Pecah kegiatan menjadi bagian kecil: makanan, wadah, dan minuman.",
+
                 description:
                     "Masalah utama: 'Menyiapkan bekal sekolah'. Pilih semua yang termasuk bagian dari masalah tersebut.",
 
@@ -1805,6 +2289,8 @@ const missions = [
 
                 title:
                     "Pecah proses membuat poster digital",
+
+                art:"💻🎨🖼️✏️", visualTitle:"Membuat Poster Digital", visualHint:"Mulai dari tujuan, informasi, gambar, layout, lalu periksa hasil.",
 
                 description:
                     "Urutkan langkah berikut agar masalah besar dapat dipecah secara sistematis.",
@@ -1836,6 +2322,8 @@ const missions = [
 
                 title:
                     "Mana yang termasuk komponen sistem?",
+
+                art:"👤🪪🕒✅", visualTitle:"Sistem Absensi Digital", visualHint:"Bedakan data yang diperlukan untuk mencatat kehadiran dari data pribadi yang tidak relevan.",
 
                 description:
                     "Pilih kartu lalu tentukan apakah informasi tersebut diperlukan dalam sistem absensi digital.",
@@ -1874,6 +2362,8 @@ const missions = [
 
                 title:
                     "Robo-Bito mengalami masalah",
+
+                art:"🤖💧🔧⚠️", visualTitle:"Pompa Tidak Mengeluarkan Air", visualHint:"Jika indikator menyala tetapi air tidak keluar, periksa bagian yang berhubungan dengan aliran air.",
 
                 description:
                     "Sistem penyiram tidak bekerja. Lampu indikator menyala, tetapi pompa tidak mengeluarkan air. Bagian mana yang paling tepat diperiksa terlebih dahulu?",
@@ -1922,6 +2412,8 @@ const missions = [
                 title:
                     "Temukan angka berikutnya",
 
+                art:"2️⃣➡️4️⃣➡️8️⃣➡️🔢", visualTitle:"Pola Perkalian", visualHint:"Amati bagaimana setiap angka berubah menjadi angka berikutnya.",
+
                 description:
                     "Perhatikan pola pertumbuhan berikut.",
 
@@ -1953,6 +2445,8 @@ const missions = [
 
                 title:
                     "Apa yang muncul berikutnya?",
+
+                art:"🔵🟡🔵🟡🔵❓", visualTitle:"Pola Warna", visualHint:"Perhatikan warna yang bergantian secara teratur.",
 
                 description:
                     "Perhatikan pola warna.",
@@ -1987,6 +2481,8 @@ const missions = [
                 title:
                     "Cocokkan pola dengan contohnya",
 
+                art:"🔁🔗💡", visualTitle:"Cocokkan Jenis Pola", visualHint:"Hubungkan pola berulang, pertumbuhan, dan urutan dengan contoh sehari-hari.",
+
                 description:
                     "Hubungkan jenis pola dengan contoh yang tepat.",
 
@@ -2020,6 +2516,8 @@ const missions = [
                 title:
                     "Temukan kelompok yang berbeda",
 
+                art:"🔢🔢🔢❌", visualTitle:"Detektif Pola", visualHint:"Cari kelompok angka yang tidak mengikuti aturan yang sama.",
+
                 description:
                     "Tiga kelompok mengikuti pola yang sama. Satu kelompok berbeda. Pilih kelompok yang berbeda.",
 
@@ -2043,6 +2541,8 @@ const missions = [
 
                 title:
                     "Prediksi pola robot",
+
+                art:"🤖➡️1️⃣➡️2️⃣➡️4️⃣➡️8️⃣", visualTitle:"Prediksi Gerak Robot", visualHint:"Gunakan pola pertumbuhan untuk memperkirakan langkah berikutnya.",
 
                 description:
                     "Robo-Bito bergerak: 1 langkah → 2 langkah → 4 langkah → 8 langkah. Jika pola tetap, berapa langkah berikutnya?",
@@ -2091,6 +2591,8 @@ const missions = [
                 title:
                     "Informasi apa yang penting?",
 
+                art:"📅⏰📤🎯", visualTitle:"Apakah Tugas Sudah Terlambat?", visualHint:"Bandingkan waktu pengumpulan, waktu sekarang, dan waktu tugas dikirim.",
+
                 description:
                     "Joko harus mengetahui apakah tugas Informatikanya sudah terlambat. Pilih informasi yang paling relevan.",
 
@@ -2119,6 +2621,8 @@ const missions = [
 
                 title:
                     "Pilih data penting untuk jadwal piket",
+
+                art:"📅👥🧹❤️", visualTitle:"Jadwal Piket Kelas", visualHint:"Simpan nama, kelompok, hari, dan tanggal; abaikan kesukaan pribadi.",
 
                 description:
                     "Tentukan data mana yang perlu disimpan dalam aplikasi jadwal piket.",
@@ -2158,6 +2662,8 @@ const missions = [
                 title:
                     "Informasi mana yang harus dihilangkan?",
 
+                art:"📚🔎👟❌", visualTitle:"Mencari Buku di Perpustakaan", visualHint:"Judul, penulis, dan kategori membantu pencarian; warna sepatu tidak.",
+
                 description:
                     "Kamu membuat aplikasi perpustakaan. Informasi mana yang tidak perlu digunakan untuk mencari buku?",
 
@@ -2182,6 +2688,8 @@ const missions = [
                 title:
                     "Bangun sistem kantin digital",
 
+                art:"🏪🍱💰🧾", visualTitle:"Kantin Digital", visualHint:"Untuk menghitung total belanja, fokus pada makanan dan harga.",
+
                 description:
                     "Kamu ingin membuat aplikasi untuk menghitung total pembelian makanan siswa. Informasi mana yang paling penting?",
 
@@ -2199,6 +2707,8 @@ const missions = [
             {
                 type:"fill",
 
+                icon:"📝",
+
                 bloom:"C5",
 
                 label:"ISI KOSONG",
@@ -2206,8 +2716,13 @@ const missions = [
                 title:
                     "Lengkapi konsep abstraksi",
 
+                art:"🧠🔍⭐🗑️", visualTitle:"Ambil yang Penting", visualHint:"Abstraksi membantu kita fokus pada informasi penting dan mengabaikan detail yang tidak diperlukan.",
+
                 description:
-                    "Dalam berpikir komputasional, abstraksi berarti fokus pada informasi yang ______ dan mengabaikan detail yang tidak diperlukan.",
+                    "Lengkapi kalimat berikut. Gunakan kata yang paling tepat untuk menjelaskan inti konsep abstraksi.",
+
+                fillPrefix:"Abstraksi berarti fokus pada informasi yang",
+                fillSuffix:"dan mengabaikan detail yang tidak diperlukan.",
 
                 answer:[
                     "penting",
@@ -2249,6 +2764,8 @@ const missions = [
                 title:
                     "Susun algoritma penyiram tanaman",
 
+                art:"🌱💧📡➡️🚰", visualTitle:"Algoritma Penyiram Tanaman", visualHint:"Susun langkah sensor → keputusan → pompa → tunggu → matikan.",
+
                 description:
                     "Susun langkah berikut agar sistem dapat bekerja dengan benar.",
 
@@ -2280,6 +2797,8 @@ const missions = [
                 title:
                     "Temukan kesalahan algoritma",
 
+                art:"🤖📋⚠️🐞🔧", visualTitle:"Cari Kesalahan Program", visualHint:"Temukan instruksi yang membuat pompa bekerja berlawanan dengan kondisi tanah.",
+
                 description:
                     "Algoritma berikut seharusnya menyalakan pompa hanya ketika tanah kering. Klik baris yang salah.",
 
@@ -2307,6 +2826,8 @@ const missions = [
                 title:
                     "Lengkapi keputusan",
 
+                art:"📡➡️🌱➡️❓➡️💧", visualTitle:"Jika Tanah Kering...", visualHint:"Ikuti cabang keputusan: sensor kering berarti tanaman membutuhkan air.",
+
                 description:
                     "Apa yang seharusnya dilakukan jika sensor menunjukkan tanah KERING?",
 
@@ -2331,6 +2852,8 @@ const missions = [
                 title:
                     "Antarkan Robo-Bito ke baterai",
 
+                art:"🤖🧭⬆️➡️⬇️🔋", visualTitle:"Rute Menuju Baterai", visualHint:"Gerakkan Robo-Bito menuju baterai dengan tombol arah dan hitung langkahmu.",
+
                 description:
                     "Gunakan tombol arah untuk membawa Robo-Bito menuju baterai. Gunakan sesedikit mungkin langkah.",
 
@@ -2347,6 +2870,8 @@ const missions = [
 
                 title:
                     "Pilih algoritma paling efisien",
+
+                art:"🤖🛣️⚡🔋", visualTitle:"Rute Paling Efisien", visualHint:"Bandingkan beberapa rute dan pilih yang mencapai baterai dengan langkah paling sedikit.",
 
                 description:
                     "Robo-Bito harus mencapai baterai. Pilih strategi dengan jumlah langkah paling sedikit.",
@@ -2366,6 +2891,16 @@ const missions = [
 
 ];
 
+/* ===== V5.5 UNIQUE LEVEL QUESTION BANK ===== */
+const extraLevelQuestions={
+1:{type:"choice",bloom:"C4",label:"PILIHAN STRATEGI",title:"Pilih bagian yang harus dipisahkan lebih dulu",art:"🧩🌱💧",visualTitle:"Memecah Masalah Kebun",visualHint:"Tentukan bagian utama sebelum menyusun solusi.",description:"Kebun sekolah sering kering. Bagian mana yang paling tepat dipisahkan menjadi submasalah terlebih dahulu?",options:["Kebutuhan air tanaman","Warna seragam siswa","Cara mengalirkan air","Jenis musik saat piket"],answer:[0,2]},
+2:{type:"prediction",bloom:"C5",label:"PREDIKSI POLA",title:"Prediksi kejadian berikutnya",art:"🔵🟡🔵🟡❓",visualTitle:"Pola Lampu Laboratorium",visualHint:"Cari urutan yang berulang lalu tentukan simbol berikutnya.",description:"Lampu menyala dengan urutan biru, kuning, biru, kuning. Apa yang paling mungkin menyala berikutnya?",options:["🔵 Biru","🟡 Kuning","🔴 Merah","⚪ Putih"],answer:0},
+3:{type:"choice",bloom:"C5",label:"ANALISIS DATA",title:"Pilih data yang paling relevan",art:"📋🎯🧹",visualTitle:"Menyaring Informasi",visualHint:"Gunakan tujuan masalah untuk menentukan data yang penting.",description:"Robo-Bito ingin mengetahui waktu antrean kantin. Data mana yang paling relevan?",options:["Waktu mulai antre","Warna sepatu siswa","Jumlah siswa dalam antrean","Merek tas siswa"],answer:[0,2]},
+4:{type:"choice",bloom:"C6",label:"STRATEGI ALGORITMA",title:"Pilih langkah awal yang paling tepat",art:"🤖🗺️➡️",visualTitle:"Menentukan Langkah Robot",visualHint:"Algoritma dimulai dari kondisi dan tujuan yang jelas.",description:"Robot harus menuju baterai dengan aman. Apa yang sebaiknya dilakukan sebelum bergerak?",options:["Menentukan posisi awal dan tujuan","Bergerak secara acak","Mengabaikan rintangan","Mengganti warna robot"],answer:0}};
+missions.forEach(m=>m.questions.push(extraLevelQuestions[m.id]));
+const levelSlices=[[0,2],[2,4],[4,6]];
+function saveProgress(){localStorage.setItem("roboBitoProgress",JSON.stringify({unlockedMissions:state.unlockedMissions,unlockedLevels:state.unlockedLevels,completedLevels:state.completedLevels,sceneBonuses:state.sceneBonuses,questionProgress:state.questionProgress,score:state.score,xp:state.xp,badges:state.badges,studentName:state.studentName,studentClass:state.studentClass}));}
+function loadProgress(){try{const p=JSON.parse(localStorage.getItem("roboBitoProgress")||"null");if(!p)return;Object.assign(state,{unlockedMissions:p.unlockedMissions||1,unlockedLevels:p.unlockedLevels||state.unlockedLevels,completedLevels:p.completedLevels||state.completedLevels,sceneBonuses:p.sceneBonuses||{},questionProgress:p.questionProgress||{},score:p.score||0,xp:p.xp||0,badges:p.badges||[],studentName:p.studentName||"",studentClass:p.studentClass||""});}catch(e){console.warn("Progress reset",e)}}
 
 /* =========================================================
    RENDER HOME
@@ -2384,7 +2919,7 @@ function renderMissions(){
             mission.id <= state.unlockedMissions;
 
         const completed =
-            mission.id < state.unlockedMissions;
+            (state.completedLevels[mission.id]||[]).length >= 3;
 
         const card =
             document.createElement("div");
@@ -2393,7 +2928,9 @@ function renderMissions(){
             "mission-card " +
             (!unlocked ? "locked" : "");
 
+        const artMap = {1:"🧩",2:"🔎",3:"🎯",4:"⚙️"};
         card.innerHTML = `
+            <div class="mission-art"><span class="orb"></span><span class="orb2"></span><span class="art-emoji">${artMap[mission.id] || mission.icon}</span></div>
 
             <div class="mission-number">
                 ${mission.icon}
@@ -2430,7 +2967,7 @@ function renderMissions(){
         if(unlocked){
 
             card.onclick =
-                () => startMission(mission.id);
+                () => showLevelPicker(mission.id);
 
         }
 
@@ -2463,35 +3000,58 @@ function showScreen(id){
    START MISSION
 ========================================================= */
 
-function startMission(id){
-
-    if(id > state.unlockedMissions){
-
-        alert(
-            "Misi ini masih terkunci. Selesaikan misi sebelumnya terlebih dahulu."
-        );
-
-        return;
-    }
-
-    state.currentMission = id;
-
-    state.currentQuestion = 0;
-
-    state.missionCorrect = 0;
-
-    state.missionScore = 0;
-
-    showScreen("missionScreen");
-
-    renderQuestion();
-
-}
+function showLevelPicker(id){
+    if(id>state.unlockedMissions){alert("Misi ini masih terkunci. Selesaikan misi sebelumnya terlebih dahulu.");return;}
+    const mission=missions[id-1];document.getElementById("levelPickerTitle").textContent=`Misi ${id} — ${mission.title}`;document.getElementById("levelPickerSubtitle").textContent=mission.subtitle+" • Setiap level memiliki soal berbeda.";
+    const grid=document.getElementById("levelPickerGrid");const levels=[{n:1,icon:"🟢",title:"Starter Mission",desc:"Menerapkan konsep dengan masalah sederhana.",bloom:"C3–C4"},{n:2,icon:"🟡",title:"Smart Thinker",desc:"Menganalisis pola, informasi, dan strategi.",bloom:"C4–C5"},{n:3,icon:"🔴",title:"Master Challenge",desc:"Mengevaluasi dan menciptakan solusi.",bloom:"C5–C6"}];const unlocked=Number(state.unlockedLevels[id]||0),done=state.completedLevels[id]||[];
+    grid.innerHTML=levels.map(l=>{const ok=l.n<=unlocked,fin=done.includes(l.n);return `<div class="v5-level-card ${ok?'':'locked'}" onclick="${ok?`startMission(${id},${l.n})`:`alert('Selesaikan Level ${l.n-1} terlebih dahulu untuk membuka level ini.')`}"><div class="v5-level-icon">${fin?'🏆':ok?l.icon:'🔒'}</div><h3>${l.title}</h3><p>${fin?'Sudah selesai • klik untuk mengulang':l.desc}</p><span class="v5-level-pill">${fin?'SELESAI':l.bloom}</span></div>`}).join("");showScreen("levelPickerScreen");}
+function startMission(id,level=1){
+    if(id>state.unlockedMissions){alert("Misi ini masih terkunci. Selesaikan misi sebelumnya terlebih dahulu.");return;}
+    if(level>Number(state.unlockedLevels[id]||0)){alert(`Selesaikan Level ${level-1} terlebih dahulu untuk membuka Level ${level}.`);return;}
+    state.studentName=document.getElementById("studentName")?.value.trim()||state.studentName||"Siswa";state.studentClass=document.getElementById("studentClass")?.value.trim()||state.studentClass||"-";localStorage.setItem("roboBitoProfile",JSON.stringify({name:state.studentName,kelas:state.studentClass}));
+    state.currentMission=id;state.currentLevel=level;const all=missions[id-1].questions,r=levelSlices[level-1]||[0,all.length];state.levelQuestions=all.slice(r[0],r[1]);state.currentQuestion=Number(state.questionProgress[`${id}-${level}`]||0);if(state.currentQuestion>=state.levelQuestions.length)state.currentQuestion=0;state.missionCorrect=0;state.missionScore=0;showScreen("missionScreen");renderQuestion();}
 
 
 /* =========================================================
+   RENDER QUESTION/* =========================================================
    RENDER QUESTION
 ========================================================= */
+
+function renderAdventure(){
+ const data=adventureStories[state.currentMission]||adventureStories[1];
+ document.getElementById("storyAvatar").textContent=data.avatar;
+ document.getElementById("storyTitle").textContent=data.title;
+ document.getElementById("storyText").textContent=data.text;
+ const scene=document.getElementById("sceneObjects");
+ const tip=document.getElementById("sceneTip");
+ tip.className="scene-tip";tip.textContent="";
+ scene.innerHTML=data.objects.map((o,i)=>`<button class="scene-object" type="button" onclick="inspectAdventureObject(${i})"><span class="scene-icon">${o[0]}</span><span class="scene-name">${o[1]}</span></button>`).join("");
+ const total=state.levelQuestions.length;
+ document.getElementById("storyProgress").innerHTML=Array.from({length:total},(_,i)=>`<span class="story-dot ${i<state.currentQuestion?'done':''} ${i===state.currentQuestion?'current':''}"></span>`).join('');
+}
+function inspectAdventureObject(i){
+ const data=adventureStories[state.currentMission]; const o=data.objects[i];
+ document.querySelectorAll('.scene-object').forEach((x,n)=>x.classList.toggle('active',n===i));
+ const tip=document.getElementById('sceneTip'); tip.className='scene-tip show'; tip.innerHTML=`👀 <b>${o[1]}:</b> ${o[2]} <span style="float:right">+5 XP</span>`;
+ if(!state.sceneBonuses) state.sceneBonuses={}; const key=state.currentMission+'-'+i;
+ if(!state.sceneBonuses[key]){state.sceneBonuses[key]=1;state.xp+=5;updateHUD();}
+}
+function adventureBurst(symbols=['⭐','✨','⚡','🎉']){
+ const wrap=document.createElement('div');wrap.className='reward-burst';
+ for(let i=0;i<14;i++){const s=document.createElement('span');s.className='spark';s.textContent=symbols[i%symbols.length];s.style.left=(45+Math.random()*10)+'%';s.style.top=(42+Math.random()*10)+'%';s.style.setProperty('--dx',((Math.random()-.5)*420)+'px');s.style.setProperty('--dy',((Math.random()-.5)*320-80)+'px');wrap.appendChild(s)}document.body.appendChild(wrap);setTimeout(()=>wrap.remove(),1000);
+}
+
+function renderMissionVisual(){
+ const el=document.getElementById('missionVisualWorld'); if(!el) return;
+ const id=state.currentMission;
+ const scenes={
+  1:`<div class="world-scene-label">🌱 DUNIA DEKOMPOSISI • PECAHKAN MASALAH</div><div class="world-track"></div><div class="robot-shadow"></div><div class="world-robot">🤖</div><div class="world-node n1">🌱</div><div class="world-node n2">💧</div><div class="world-node n3">📡</div><div class="world-goal">🚰</div>`,
+  2:`<div class="world-scene-label">🔎 DUNIA POLA • TEMUKAN ATURANNYA</div><div class="pattern-sequence"><span>🔵</span><span>🟡</span><span>🔵</span><span>🟡</span><span>❓</span></div><div class="world-node n1">🔍</div><div class="world-node n2">✨</div><div class="world-node n3">🔢</div>`,
+  3:`<div class="world-scene-label">🎯 DUNIA ABSTRAKSI • SARING YANG PENTING</div><div class="data-flow"><div class="data-card">📋</div><div class="data-arrow">→</div><div class="data-card">🧹</div><div class="data-arrow">→</div><div class="data-card">🎯</div></div><div class="world-node n1">📊</div><div class="world-node n3">🗑️</div>`,
+  4:`<div class="world-scene-label">⚙️ DUNIA ALGORITMA • SUSUN LANGKAH</div><div class="algorithm-flow"><div class="algo-step">1<br>🎯 TUJUAN</div><div class="algo-arrow">→</div><div class="algo-step">2<br>🧠 RENCANA</div><div class="algo-arrow">→</div><div class="algo-step">3<br>👣 LANGKAH</div><div class="algo-arrow">→</div><div class="algo-step">4<br>🚀 JALANKAN</div></div><div class="world-goal">🏁</div>`
+ };
+ el.innerHTML=scenes[id]||scenes[1];
+}
 
 function renderQuestion(){
 
@@ -2499,17 +3059,25 @@ function renderQuestion(){
         missions[state.currentMission - 1];
 
     const question =
-        mission.questions[state.currentQuestion];
+        state.levelQuestions[state.currentQuestion];
 
     state.questionAnswered = false;
 
     state.selectedAnswer = null;
 
+    state.selectedAnswers = [];
+
     state.selectedItems = [];
 
+    state.sortOrder = [];
+
     state.matchingPairs = {};
+    matchFirst = null;
 
     state.classified = {};
+
+    renderAdventure();
+    renderMissionVisual();
 
     document.getElementById("missionName")
         .textContent =
@@ -2523,6 +3091,9 @@ function renderQuestion(){
         .textContent =
         question.label;
 
+    const qNum=document.getElementById("questionNumber");
+    if(qNum) qNum.textContent=`SOAL ${state.currentQuestion+1} / ${state.levelQuestions.length}`;
+
     document.getElementById("bloomLevel")
         .textContent =
         question.bloom;
@@ -2535,8 +3106,80 @@ function renderQuestion(){
         .textContent =
         question.description;
 
+    const iconMap = {
+        choice:"🧠", case:"🕵️", pattern:"🔢", "visual-pattern":"🎨",
+        "odd-pattern":"🔎", prediction:"🔮", drag:"🧩", sort:"🪜",
+        fill:"✍️", matching:"🔗", classification:"🗂️", filter:"🎯",
+        debugging:"🐞", flowchart:"🗺️", simulation:"🤖", optimization:"⚡"
+    };
+    const oldVisual=document.getElementById("questionVisual");
+    if(oldVisual) oldVisual.remove();
+    const visual = document.createElement("div");
+    visual.id="questionVisual";
+    visual.className="question-visual";
+    const art = question.art || iconMap[question.type] || "🤖";
+    visual.innerHTML = `
+      <div class="question-visual-art">${art}</div>
+      <div><div class="question-visual-title">${question.visualTitle || question.title}</div>
+      <div class="question-visual-sub">${question.visualHint || "Amati ilustrasi, pahami misi, lalu pilih strategi terbaik."}</div>
+      <div class="context-chip">👀 Amati konteks sebelum menjawab</div></div>`;
+    document.getElementById("questionArea").before(visual);
+    // V5.9: Master Challenge Algoritma mendapat visual kontekstual yang benar-benar
+    // membantu siswa membaca situasi, bukan hanya ikon dekoratif.
+    if(state.currentMission===4 && state.currentLevel===3){
+        const masterVisual=document.createElement("div");
+        masterVisual.className="algorithm-master-visual";
+        if(question.type==="simulation"){
+            masterVisual.innerHTML=`
+              <div class="amv-head"><span class="amv-badge">MASTER CHALLENGE</span><span class="amv-title">🧭 Peta Misi Robo-Bito</span></div>
+              <div class="amv-sub">Ikuti jalur dari robot menuju baterai. Setiap tombol arah adalah satu langkah algoritma.</div>
+              <div class="amv-flow">
+                <div class="amv-node"><div class="amv-icon">🤖</div><div class="amv-label">POSISI AWAL</div></div>
+                <div class="amv-arrow">→</div>
+                <div class="amv-node"><div class="amv-icon">⬆️➡️</div><div class="amv-label">LANGKAH</div></div>
+                <div class="amv-arrow">→</div>
+                <div class="amv-node"><div class="amv-icon">🔋</div><div class="amv-label">TUJUAN</div></div>
+              </div>
+              <div class="amv-grid">
+                <div class="amv-card"><strong>🗺️ Jalur yang perlu dipikirkan</strong>
+                  <div class="amv-route">
+                    <span class="amv-step">🤖</span><span>→</span><span class="amv-step">→</span><span class="amv-step">→</span><span class="amv-step">↓</span><span class="amv-step hot">↓</span><span class="amv-step goal">🔋</span>
+                  </div>
+                </div>
+                <div class="amv-card"><strong>🧠 Cara berpikir algoritmik</strong>
+                  <div class="amv-route">
+                    <span class="amv-step">1</span><span>→</span><span class="amv-step">2</span><span>→</span><span class="amv-step">3</span><span>→</span><span class="amv-step goal">✓</span>
+                  </div>
+                </div>
+              </div>
+              <div class="amv-note">💡 Tujuanmu bukan sekadar bergerak, tetapi menemukan urutan langkah yang dapat dijalankan robot.</div>`;
+        }else if(question.type==="optimization"){
+            masterVisual.innerHTML=`
+              <div class="amv-head"><span class="amv-badge">MASTER CHALLENGE</span><span class="amv-title">⚡ Bandingkan Efisiensi Algoritma</span></div>
+              <div class="amv-sub">Setiap rute adalah sebuah algoritma. Pilih rute yang mencapai baterai dengan langkah paling sedikit.</div>
+              <div class="amv-grid">
+                <div class="amv-card"><strong>🐢 Rute A — banyak langkah</strong>
+                  <div class="amv-route"><span class="amv-step">🤖</span><span>→</span><span class="amv-step">→</span><span>→</span><span class="amv-step">↑</span><span>→</span><span class="amv-step">↓</span><span>→</span><span class="amv-step hot">↓</span><span>→</span><span class="amv-step goal">🔋</span></div>
+                </div>
+                <div class="amv-card"><strong>🚀 Rute B — lebih langsung</strong>
+                  <div class="amv-route"><span class="amv-step">🤖</span><span>→</span><span class="amv-step">→</span><span>↓</span><span class="amv-step">↓</span><span class="amv-step goal">🔋</span></div>
+                </div>
+              </div>
+              <div class="amv-flow" style="margin-top:14px">
+                <div class="amv-node"><div class="amv-icon">📏</div><div class="amv-label">HITUNG LANGKAH</div></div>
+                <div class="amv-arrow">→</div>
+                <div class="amv-node"><div class="amv-icon">⚖️</div><div class="amv-label">BANDINGKAN</div></div>
+                <div class="amv-arrow">→</div>
+                <div class="amv-node"><div class="amv-icon">🏆</div><div class="amv-label">PILIH EFISIEN</div></div>
+              </div>
+              <div class="amv-note">💡 Algoritma yang baik tidak hanya benar, tetapi juga dapat dibuat lebih efisien.</div>`;
+        }
+        document.getElementById("questionArea").before(masterVisual);
+    }
+
+
     const total =
-        mission.questions.length;
+        state.levelQuestions.length;
 
     const current =
         state.currentQuestion + 1;
@@ -2642,45 +3285,36 @@ function renderQuestion(){
 
 function renderChoice(q,area){
 
-    const options =
-        document.createElement("div");
-
-    options.className = "options";
+    const multi = Array.isArray(q.answer);
+    const options = document.createElement("div");
+    options.className = "options" + (multi ? " choice-grid multi" : "");
 
     q.options.forEach((text,index)=>{
-
-        const btn =
-            document.createElement("button");
-
-        btn.className = "option";
-
-        btn.innerHTML =
-            `<strong>${String.fromCharCode(65+index)}.</strong>
-             &nbsp;${text}`;
-
-        btn.onclick = ()=>{
-
+        const btn=document.createElement("button");
+        btn.className="option";
+        btn.setAttribute("data-option",String.fromCharCode(65+index));
+        btn.type="button";
+        btn.innerHTML = `<strong>${String.fromCharCode(65+index)}.</strong>&nbsp;${text}${multi?'<span class="checkmark">✓</span>':''}`;
+        btn.onclick=()=>{
             if(state.questionAnswered) return;
-
-            options
-                .querySelectorAll(".option")
-                .forEach(x =>
-                    x.classList.remove("selected")
-                );
-
-            btn.classList.add("selected");
-
-            state.selectedAnswer = index;
-
+            if(multi){
+                const pos=state.selectedAnswers.indexOf(index);
+                if(pos>=0){ state.selectedAnswers.splice(pos,1); btn.classList.remove("selected"); }
+                else { state.selectedAnswers.push(index); btn.classList.add("selected"); }
+                state.selectedAnswers.sort((a,b)=>a-b);
+            }else{
+                options.querySelectorAll(".option").forEach(x=>x.classList.remove("selected"));
+                btn.classList.add("selected");
+                state.selectedAnswer=index;
+            }
         };
-
         options.appendChild(btn);
-
     });
-
     area.appendChild(options);
+    if(multi){
+        const note=document.createElement("div"); note.className="visual-tip"; note.innerHTML="💡 <b>Pilih semua jawaban yang benar.</b> Kamu boleh mengubah pilihan sebelum menekan Periksa Jawaban."; area.appendChild(note);
+    }
 }
-
 
 /* =========================================================
    PATTERN
@@ -2770,189 +3404,71 @@ function renderVisualPattern(q,area){
 ========================================================= */
 
 function renderDrag(q,area){
+    const layout=document.createElement("div"); layout.className="drag-layout";
+    const list=document.createElement("div"); list.className="drag-list";
+    list.innerHTML=`<h4>🃏 KARTU INFORMASI</h4><div class="drag-instruction">Seret kartu ke zona tujuan, atau <b>ketuk kartu</b> untuk menambahkannya.</div>`;
+    const items=document.createElement("div"); items.className="drag-items";
+    const zone=document.createElement("div"); zone.className="drop-zone";
+    zone.innerHTML=`<h4>🎯 INFORMASI YANG DIPERLUKAN</h4><div class="drag-instruction">Kartu yang dipilih muncul di sini. Ketuk kartu untuk menghapusnya.</div>`;
 
-    const layout =
-        document.createElement("div");
-
-    layout.className="drag-layout";
-
-    const list =
-        document.createElement("div");
-
-    list.className="drag-list";
-
-    list.innerHTML =
-        `<h4>KARTU INFORMASI</h4>`;
-
-    const items =
-        document.createElement("div");
-
-    items.className="drag-items";
-
-    const zone =
-        document.createElement("div");
-
-    zone.className="drop-zone";
-
-    zone.innerHTML =
-        `<h4>INFORMASI YANG DIPERLUKAN</h4>`;
-
-    q.items.forEach((item,index)=>{
-
-        const el =
-            document.createElement("div");
-
-        el.className="drag-item";
-
-        el.textContent=item;
-
-        el.draggable=true;
-
-        el.dataset.value=item;
-
-        el.addEventListener(
-            "dragstart",
-            e=>{
-                e.dataTransfer.setData(
-                    "text/plain",
-                    item
-                );
-            }
-        );
-
-        /* pointer/touch */
-
-        el.addEventListener(
-            "pointerdown",
-            ()=>{
-                state.dragValue=item;
-            }
-        );
-
+    q.items.forEach(item=>{
+        const el=document.createElement("div"); el.className="drag-item"; el.textContent=item; el.draggable=true; el.dataset.value=item;
+        const add=()=>{ if(!state.questionAnswered) addDrop(item,zone,el); };
+        el.addEventListener("dragstart",e=>e.dataTransfer.setData("text/plain",item));
+        el.addEventListener("click",add);
         items.appendChild(el);
-
     });
-
-    zone.addEventListener(
-        "dragover",
-        e=>e.preventDefault()
-    );
-
-    zone.addEventListener(
-        "drop",
-        e=>{
-
-            e.preventDefault();
-
-            const value =
-                e.dataTransfer.getData("text/plain");
-
-            addDrop(value,zone);
-
-        }
-    );
-
-    zone.addEventListener(
-        "pointerup",
-        ()=>{
-            if(state.dragValue){
-
-                addDrop(
-                    state.dragValue,
-                    zone
-                );
-
-                state.dragValue=null;
-            }
-        }
-    );
-
-    layout.appendChild(list);
-
-    list.appendChild(items);
-
-    layout.appendChild(zone);
-
-    area.appendChild(layout);
-
+    zone.addEventListener("dragover",e=>e.preventDefault());
+    zone.addEventListener("drop",e=>{e.preventDefault(); addDrop(e.dataTransfer.getData("text/plain"),zone);});
+    layout.appendChild(list); list.appendChild(items); layout.appendChild(zone); area.appendChild(layout);
 }
 
-
-function addDrop(value,zone){
-
+function addDrop(value,zone,sourceEl){
     if(!value) return;
-
-    const exists =
-        [...zone.querySelectorAll(".drop-slot")]
-        .some(x=>x.dataset.value===value);
-
+    const exists=[...zone.querySelectorAll(".drop-slot")].some(x=>x.dataset.value===value);
     if(exists) return;
-
-    const slot =
-        document.createElement("div");
-
-    slot.className=
-        "drop-slot filled";
-
-    slot.dataset.value=value;
-
-    slot.textContent=
-        "✓ " + value;
-
+    const slot=document.createElement("div"); slot.className="drop-slot filled"; slot.dataset.value=value; slot.textContent="✓ "+value;
+    slot.title="Ketuk untuk menghapus";
+    slot.onclick=()=>{slot.remove(); const src=[...document.querySelectorAll('.drag-item')].find(x=>x.dataset.value===value); if(src) src.classList.remove('used');};
     zone.appendChild(slot);
-
+    const src=sourceEl || [...document.querySelectorAll('.drag-item')].find(x=>x.dataset.value===value); if(src) src.classList.add('used');
 }
-
 
 /* =========================================================
    SORT
 ========================================================= */
 
 function renderSort(q,area){
-
-    const list =
-        document.createElement("div");
-
-    list.className="sort-list";
-
-    const shuffled =
-        [...q.items].sort(
-            ()=>Math.random()-.5
-        );
-
+    state.sortOrder=[];
+    const wrap=document.createElement("div"); wrap.className="sort-builder";
+    const bank=document.createElement("div"); bank.className="sort-bank";
+    const answer=document.createElement("div"); answer.className="sort-answer";
+    bank.innerHTML=`<h4>🃏 PILIH KARTU BERURUTAN</h4><div class="sort-instruction">Ketuk langkah sesuai urutan yang benar. Tidak perlu drag.</div>`;
+    answer.innerHTML=`<h4>🪜 URUTAN KAMU</h4><div class="sort-instruction">Langkah yang dipilih akan muncul di sini.</div>`;
+    const bankList=document.createElement("div"); bank.appendChild(bankList);
+    const answerList=document.createElement("div"); answer.appendChild(answerList);
+    const shuffled=[...q.items].sort(()=>Math.random()-.5);
     shuffled.forEach(item=>{
-
-        const el =
-            document.createElement("div");
-
-        el.className="sort-item";
-
-        el.dataset.value=item;
-
-        el.innerHTML=`
-            <span class="sort-number">
-                ↕
-            </span>
-
-            <span>${item}</span>
-        `;
-
-        el.onclick=()=>{
-
-            if(state.questionAnswered)
-                return;
-
-            list.appendChild(el);
-
+        const card=document.createElement("button"); card.type="button"; card.className="sort-card"; card.dataset.value=item; card.textContent=item;
+        card.onclick=()=>{
+            if(state.questionAnswered || state.sortOrder.includes(item)) return;
+            state.sortOrder.push(item); card.classList.add("selected"); card.disabled=true;
+            const picked=document.createElement("div"); picked.className="sort-picked"; picked.dataset.value=item;
+            picked.innerHTML=`<span class="sort-number">${state.sortOrder.length}</span><span>${item}</span><button class="remove-sort" type="button">×</button>`;
+            picked.querySelector(".remove-sort").onclick=()=>{
+                const idx=state.sortOrder.indexOf(item); if(idx>=0) state.sortOrder.splice(idx,1);
+                card.disabled=false; card.classList.remove("selected"); picked.remove(); refreshSortNumbers(answerList);
+            };
+            answerList.appendChild(picked); refreshSortNumbers(answerList);
         };
-
-        list.appendChild(el);
-
+        bankList.appendChild(card);
     });
-
-    area.appendChild(list);
-
+    const actions=document.createElement("div"); actions.className="sort-actions";
+    const clear=document.createElement("button"); clear.type="button"; clear.textContent="↺ Reset urutan"; clear.onclick=()=>{state.sortOrder=[]; bankList.querySelectorAll('.sort-card').forEach(c=>{c.disabled=false;c.classList.remove('selected')}); answerList.innerHTML="";};
+    actions.appendChild(clear); answer.appendChild(actions);
+    wrap.appendChild(bank); wrap.appendChild(answer); area.appendChild(wrap);
 }
+function refreshSortNumbers(list){[...list.querySelectorAll('.sort-picked')].forEach((x,i)=>x.querySelector('.sort-number').textContent=i+1);}
 
 
 /* =========================================================
@@ -2960,35 +3476,14 @@ function renderSort(q,area){
 ========================================================= */
 
 function renderFill(q,area){
-
-    const wrapper =
-        document.createElement("div");
-
-    wrapper.className="fill-area";
-
-    const input =
-        document.createElement("input");
-
-    input.className="fill-input";
-
-    input.id="fillAnswer";
-
-    input.placeholder="jawaban...";
-
-    wrapper.append(
-        document.createTextNode(
-            "Abstraksi berarti fokus pada informasi yang "
-        ),
-        input,
-        document.createTextNode(
-            " dan mengabaikan detail yang tidak diperlukan."
-        )
-    );
-
-    area.appendChild(wrapper);
-
+    const wrapper=document.createElement("div"); wrapper.className="fill-area";
+    const prefix=document.createElement("span"); prefix.textContent=(q.fillPrefix || "Lengkapi kalimat: ");
+    const input=document.createElement("input"); input.className="fill-input"; input.id="fillAnswer"; input.autocomplete="off"; input.placeholder="ketik jawaban...";
+    const suffix=document.createElement("span"); suffix.textContent=(q.fillSuffix || "");
+    wrapper.append(prefix,document.createTextNode(" "),input,document.createTextNode(" "),suffix); area.appendChild(wrapper);
+    const hint=document.createElement("div"); hint.className="visual-tip"; hint.innerHTML="✏️ <b>Tips:</b> ketik satu kata/istilah. Huruf besar-kecil tidak masalah."; area.appendChild(hint);
+    input.addEventListener("keydown",e=>{if(e.key==="Enter") checkAnswer();});
 }
-
 
 /* =========================================================
    MATCHING
@@ -3000,6 +3495,8 @@ function renderMatching(q,area){
         document.createElement("div");
 
     layout.className="match-layout";
+
+    const tip=document.createElement("div"); tip.className="match-instruction"; tip.innerHTML="🔗 <b>Pencocokan:</b> klik satu kartu di kiri lalu klik pasangan yang sesuai di kanan.";
 
     const left =
         document.createElement("div");
@@ -3055,6 +3552,7 @@ function renderMatching(q,area){
 
     layout.appendChild(left);
     layout.appendChild(right);
+    area.appendChild(tip);
 
     area.appendChild(layout);
 
@@ -3387,11 +3885,13 @@ let simX=0;
 let simY=0;
 let targetX=5;
 let targetY=3;
+let simStarted=false;
 
 function renderSimulation(q,area){
 
     simX=0;
     simY=0;
+    simStarted=false;
 
     const sim =
         document.createElement("div");
@@ -3446,6 +3946,16 @@ function renderSimulation(q,area){
 
     sim.appendChild(target);
     sim.appendChild(player);
+    const startLabel=document.createElement("div");
+    startLabel.className="sim-label-start";
+    startLabel.textContent="MULAI";
+    startLabel.style.cssText=`position:absolute;left:2px;top:-20px;font-size:10px;font-weight:900;color:#1769aa;`;
+    sim.appendChild(startLabel);
+    const targetLabel=document.createElement("div");
+    targetLabel.className="sim-label-target";
+    targetLabel.textContent="TUJUAN";
+    targetLabel.style.cssText=`position:absolute;left:${targetX*40-4}px;top:${targetY*40+38}px;font-size:10px;font-weight:900;color:#208443;`;
+    sim.appendChild(targetLabel);
 
     area.appendChild(sim);
 
@@ -3506,6 +4016,8 @@ function moveRobot(direction){
     if(state.questionAnswered)
         return;
 
+    simStarted=true;
+
     if(direction==="up")
         simY=Math.max(0,simY-1);
 
@@ -3552,9 +4064,29 @@ function checkAnswer(){
         missions[state.currentMission-1];
 
     const q =
-        mission.questions[state.currentQuestion];
+        state.levelQuestions[state.currentQuestion];
 
     let correct=false;
+
+    // Prevent accidental checking of incomplete interactive answers.
+    const needsInput = {
+      choice:()=>Array.isArray(q.answer) ? state.selectedAnswers.length>0 : state.selectedAnswer!==null,
+      case:()=>Array.isArray(q.answer) ? state.selectedAnswers.length>0 : state.selectedAnswer!==null,
+      pattern:()=>Array.isArray(q.answer) ? state.selectedAnswers.length>0 : state.selectedAnswer!==null,
+      "visual-pattern":()=>state.selectedAnswer!==null, "odd-pattern":()=>state.selectedAnswer!==null,
+      prediction:()=>state.selectedAnswer!==null, optimization:()=>state.selectedAnswer!==null, flowchart:()=>state.selectedAnswer!==null,
+      drag:()=>document.querySelectorAll(".drop-slot.filled").length>0, sort:()=>state.sortOrder.length===q.items.length,
+      fill:()=>document.getElementById("fillAnswer")?.value.trim().length>0,
+      matching:()=>Object.keys(state.matchingPairs).length===Object.keys(q.answer).length,
+      classification:()=>Object.keys(state.classified).length===q.items.length,
+      filter:()=>state.selectedItems.length>0, debugging:()=>state.selectedAnswer!==null, simulation:()=>simStarted
+    };
+    if(needsInput[q.type] && !needsInput[q.type]()){
+      const fb=document.getElementById("feedback");
+      fb.className="feedback show bad";
+      fb.textContent="🧠 Belum lengkap. Coba selesaikan semua bagian terlebih dahulu.";
+      return;
+    }
 
     switch(q.type){
 
@@ -3567,10 +4099,11 @@ function checkAnswer(){
         case "optimization":
         case "flowchart":
 
-            correct =
-                state.selectedAnswer ===
-                q.answer;
-
+            if(Array.isArray(q.answer)) {
+                correct = JSON.stringify(state.selectedAnswers.slice().sort((a,b)=>a-b)) === JSON.stringify(q.answer.slice().sort((a,b)=>a-b));
+            } else {
+                correct = state.selectedAnswer === q.answer;
+            }
             break;
 
 
@@ -3596,16 +4129,7 @@ function checkAnswer(){
 
         case "sort":{
 
-            const selected =
-                [
-                    ...document.querySelectorAll(
-                        ".sort-item"
-                    )
-                ].map(x=>x.dataset.value);
-
-            correct =
-                JSON.stringify(selected) ===
-                JSON.stringify(q.answer);
+            correct = JSON.stringify(state.sortOrder) === JSON.stringify(q.answer);
 
             break;
         }
@@ -3734,6 +4258,7 @@ function showFeedback(correct){
             "Soal Berikutnya →";
 
         updateHUD();
+        adventureBurst();
 
         return;
     }
@@ -3786,10 +4311,10 @@ function nextQuestion(){
 
     if(
         state.currentQuestion <
-        mission.questions.length-1
+        state.levelQuestions.length-1
     ){
 
-        state.currentQuestion++;
+        state.currentQuestion++;state.questionProgress[`${state.currentMission}-${state.currentLevel}`]=state.currentQuestion;saveProgress();
 
         renderQuestion();
 
@@ -3806,93 +4331,120 @@ function nextQuestion(){
    COMPLETE MISSION
 ========================================================= */
 
-function completeMission(){
+function nextMission(){
+    // Tombol ini selalu membawa siswa ke tujuan berikutnya yang benar:
+    // Level 1 -> Level 2 -> Level 3 -> Misi berikutnya Level 1 -> Final Mission.
+    const missionId = state.currentMission;
+    const level = state.currentLevel;
 
-    const mission =
-        missions[state.currentMission-1];
-
-    const bonus=200;
-
-    state.score += bonus;
-
-    state.xp += bonus;
-
-    state.missionScore += bonus;
-
-    if(
-        !state.badges.includes(
-            mission.badge
-        )
-    ){
-
-        state.badges.push(
-            mission.badge
-        );
-
+    if(level < 3){
+        const nextLevel = level + 1;
+        if(Number(state.unlockedLevels[missionId] || 0) < nextLevel){
+            state.unlockedLevels[missionId] = nextLevel;
+        }
+        saveProgress();
+        startMission(missionId, nextLevel);
+        return;
     }
 
-    if(
-        state.currentMission ===
-        state.unlockedMissions &&
-        state.unlockedMissions <
-        missions.length
-    ){
-
-        state.unlockedMissions++;
+    if(missionId < missions.length){
+        const nextMissionId = missionId + 1;
+        state.unlockedMissions = Math.max(Number(state.unlockedMissions || 1), nextMissionId);
+        state.unlockedLevels[nextMissionId] = Math.max(Number(state.unlockedLevels[nextMissionId] || 0), 1);
+        saveProgress();
+        startMission(nextMissionId, 1);
+        return;
     }
 
-    document.getElementById("resultScore")
-        .textContent=
-        state.missionScore;
-
-    document.getElementById("resultXP")
-        .textContent=
-        `+${state.missionScore}`;
-
-    document.getElementById("resultCorrect")
-        .textContent=
-        `${state.missionCorrect}/${mission.questions.length}`;
-
-    document.getElementById("resultBadge")
-        .textContent=
-        mission.badge;
-
-    document.getElementById("completeMessage")
-        .textContent=
-        `${mission.title} selesai! Bonus misi +${bonus} XP.`;
-
-    updateHUD();
-
-    showScreen("completeScreen");
-
+    // Semua 4 misi selesai: lanjut ke Final Create Challenge.
+    saveProgress();
+    showCreateChallenge();
 }
+
+function completeMission(){
+ const mission=missions[state.currentMission-1],bonus=200;state.score+=bonus;state.xp+=bonus;state.missionScore+=bonus;if(!state.badges.includes(mission.badge))state.badges.push(mission.badge);
+ if(!state.completedLevels[state.currentMission])state.completedLevels[state.currentMission]=[];if(!state.completedLevels[state.currentMission].includes(state.currentLevel))state.completedLevels[state.currentMission].push(state.currentLevel);delete state.questionProgress[`${state.currentMission}-${state.currentLevel}`];
+ if(state.currentLevel<3)state.unlockedLevels[state.currentMission]=Math.max(Number(state.unlockedLevels[state.currentMission]||1),state.currentLevel+1);else if(state.currentMission<missions.length){state.unlockedMissions=Math.max(state.unlockedMissions,state.currentMission+1);state.unlockedLevels[state.currentMission+1]=Math.max(Number(state.unlockedLevels[state.currentMission+1]||0),1);}
+ saveProgress();document.getElementById("resultScore").textContent=state.missionScore;document.getElementById("resultXP").textContent=`+${state.missionScore}`;document.getElementById("resultCorrect").textContent=`${state.missionCorrect}/${state.levelQuestions.length}`;document.getElementById("resultBadge").textContent=mission.badge;document.getElementById("completeMessage").textContent=`${mission.title} selesai! Level ${state.currentLevel} berhasil dituntaskan. Bonus +${bonus} XP.`;document.getElementById("nextMissionBtn").textContent=state.currentLevel<3?"Level Berikutnya →":(state.currentMission<missions.length?"Misi Berikutnya →":"Final Mission →");document.getElementById("reflectionSummary").textContent=`${mission.title} • Level ${state.currentLevel} • ${state.missionCorrect}/${state.levelQuestions.length} tantangan benar.`;["reflectionStrategy","reflectionHard","reflectionFix","reflectionTransfer"].forEach(id=>document.getElementById(id).value="");updateHUD();showScreen("reflectionScreen");}
 
 
 /* =========================================================
-   NEXT MISSION
+   V5 REFLECTION/* =========================================================
+   V5 REFLECTION / TEACHER / CREATE
 ========================================================= */
-
-function nextMission(){
-
-    if(
-        state.currentMission <
-        missions.length
-    ){
-
-        startMission(
-            state.currentMission+1
-        );
-
-    }else{
-
-        showScreen(
-            "certificateScreen"
-        );
-
-    }
-
+function saveMissionRecord(){
+    const key="roboBitoRecords";
+    const records=JSON.parse(localStorage.getItem(key)||"[]");
+    records.push({
+        name:state.studentName||"Siswa",
+        kelas:state.studentClass||"-",
+        mission:missions[state.currentMission-1].title,
+        missionId:state.currentMission,
+        level:state.currentLevel,
+        correct:state.missionCorrect,
+        total:state.levelQuestions.length,
+        score:state.missionScore,
+        reflection:1,
+        strategy:document.getElementById("reflectionStrategy").value.trim(),
+        hard:document.getElementById("reflectionHard").value.trim(),
+        fix:document.getElementById("reflectionFix").value.trim(),
+        transfer:document.getElementById("reflectionTransfer").value.trim(),
+        time:new Date().toLocaleString("id-ID")
+    });
+    localStorage.setItem(key,JSON.stringify(records));
 }
 
+function submitReflection(){
+    const fields=["reflectionStrategy","reflectionHard","reflectionFix","reflectionTransfer"];
+    const filled=fields.filter(id=>document.getElementById(id).value.trim()).length;
+    if(filled<2){alert("Lengkapi minimal 2 refleksi agar pengalaman bermain menjadi pengalaman belajar.");return;}
+    saveMissionRecord();
+    state.reflections++;saveProgress();
+    showScreen("completeScreen");
+}
+
+function showTeacherDashboard(){
+    renderTeacherDashboard();
+    showScreen("teacherScreen");
+}
+
+function renderTeacherDashboard(){
+    const records=JSON.parse(localStorage.getItem("roboBitoRecords")||"[]");
+    const students=new Set(records.map(r=>r.name)).size;
+    const avg=records.length?Math.round(records.reduce((a,r)=>a+(r.total?r.correct/r.total*100:0),0)/records.length):0;
+    document.getElementById("tdStudents").textContent=students;
+    document.getElementById("tdMissions").textContent=records.length;
+    document.getElementById("tdAvg").textContent=avg;
+    document.getElementById("tdReflections").textContent=records.filter(r=>r.reflection).length;
+    const concepts={"Dekomposisi":[],"Pengenalan Pola":[],"Abstraksi":[],"Algoritma":[]};
+    records.forEach(r=>{if(concepts[r.mission]) concepts[r.mission].push(r.total?r.correct/r.total*100:0)});
+    document.getElementById("tdMastery").innerHTML=Object.entries(concepts).map(([k,v])=>{const n=v.length?Math.round(v.reduce((a,b)=>a+b,0)/v.length):0;return `<div class="v5-mastery-row"><span>${k}</span><div class="v5-bar"><span style="width:${n}%"></span></div><strong>${n}%</strong></div>`}).join("");
+    document.getElementById("tdRows").innerHTML=records.slice().reverse().map(r=>`<tr><td>${escapeHtml(r.name)}</td><td>${escapeHtml(r.kelas)}</td><td>${r.mission}</td><td>${r.level}</td><td>${r.correct}/${r.total}</td><td>${r.score}</td></tr>`).join("") || `<tr><td colspan="6">Belum ada data. Jalankan misi terlebih dahulu.</td></tr>`;
+}
+function escapeHtml(v){return String(v).replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]));}
+function exportTeacherCSV(){
+    const records=JSON.parse(localStorage.getItem("roboBitoRecords")||"[]");
+    if(!records.length){alert("Belum ada data untuk diekspor.");return;}
+    const head=["Nama","Kelas","Misi","Level","Benar","Total","Skor","Waktu"];
+    const rows=records.map(r=>[r.name,r.kelas,r.mission,r.level,r.correct,r.total,r.score,r.time]);
+    const csv=[head,...rows].map(row=>row.map(x=>`"${String(x).replace(/"/g,'""')}"`).join(",")).join("\n");
+    const blob=new Blob(["\ufeff"+csv],{type:"text/csv;charset=utf-8;"});
+    const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="ROBO-BITO-Teacher-Report.csv";a.click();URL.revokeObjectURL(a.href);
+}
+function clearTeacherData(){
+    if(confirm("Hapus seluruh data lokal ROBO-BITO pada perangkat ini?")){localStorage.removeItem("roboBitoRecords");renderTeacherDashboard();}
+}
+function showCreateChallenge(){
+    ["createDecomp","createPattern","createAbstract","createAlgorithm"].forEach(id=>document.getElementById(id).value="");
+    showScreen("createScreen");
+}
+function submitCreateChallenge(){
+    const ids=["createDecomp","createPattern","createAbstract","createAlgorithm"];
+    if(ids.some(id=>!document.getElementById(id).value.trim())){alert("Lengkapi keempat tahap agar solusi finalmu dapat dinilai.");return;}
+    state.finalCreate=true;
+    localStorage.setItem("roboBitoFinalCreate",JSON.stringify({name:state.studentName,kelas:state.studentClass,problem:document.getElementById("createProblem").value,decomposition:document.getElementById("createDecomp").value,pattern:document.getElementById("createPattern").value,abstraction:document.getElementById("createAbstract").value,algorithm:document.getElementById("createAlgorithm").value,time:new Date().toLocaleString("id-ID")}));
+    state.score+=500;state.xp+=500;document.getElementById("certificateName").textContent=state.studentName||"Computational Thinker";updateHUD();showScreen("certificateScreen");
+}
 
 /* =========================================================
    HINT
@@ -3906,7 +4458,7 @@ function giveHint(){
         missions[state.currentMission-1];
 
     const q =
-        mission.questions[state.currentQuestion];
+        state.levelQuestions[state.currentQuestion];
 
     let hint="";
 
@@ -3969,7 +4521,7 @@ function resetQuestion(){
         missions[state.currentMission-1];
 
     const q =
-        mission.questions[state.currentQuestion];
+        state.levelQuestions[state.currentQuestion];
 
     if(q.type==="simulation"){
 
@@ -3993,6 +4545,7 @@ function resetQuestion(){
 
 function goHome(){
 
+    saveProgress();
     renderMissions();
 
     showScreen("homeScreen");
@@ -4300,6 +4853,9 @@ document.addEventListener(
    INITIALIZE
 ========================================================= */
 
+loadProgress();
+const savedProfile=JSON.parse(localStorage.getItem("roboBitoProfile")||"null");
+if(savedProfile){state.studentName=savedProfile.name||"";state.studentClass=savedProfile.kelas||"";document.getElementById("studentName").value=state.studentName;document.getElementById("studentClass").value=state.studentClass;}
 renderMissions();
 
 updateHUD();
